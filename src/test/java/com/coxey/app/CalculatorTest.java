@@ -12,6 +12,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class CalculatorTest {
     private Calculator calculator;
+
     @Mock
     private Calculator calculatorMock;
 

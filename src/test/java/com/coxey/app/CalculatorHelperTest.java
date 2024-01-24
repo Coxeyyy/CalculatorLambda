@@ -14,8 +14,10 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class CalculatorHelperTest {
     private CalculatorHelper calculatorHelper;
+
     @Spy
     private CalculatorHelper calculatorHelperSpy;
+
     @Mock
     private CalculatorHelper calculatorHelperMock;
 
