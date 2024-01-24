@@ -3,21 +3,25 @@ package com.coxey.app;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.spy;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CalculatorHelperTest {
     private CalculatorHelper calculatorHelper;
+    @Spy
     private CalculatorHelper calculatorHelperSpy;
+    @Mock
+    private CalculatorHelper calculatorHelperMock;
 
     @BeforeEach
     void setUp() {
         calculatorHelper = new CalculatorHelper();
-        calculatorHelperSpy = spy(CalculatorHelper.class);
     }
 
     @Test
@@ -39,13 +43,8 @@ class CalculatorHelperTest {
 
     @Test
     void methodToPostfixThrowNoOperatorException() {
-        boolean exceptionThrow = false;
-        try {
-            calculatorHelper.toPostfix("2 2");
-        } catch (NoOperatorException e) {
-            exceptionThrow = true;
-        }
-        assertTrue(exceptionThrow);
+        when(calculatorHelperMock.toPostfix(anyString())).thenThrow(NoOperatorException.class);
+        assertThrows(NoOperatorException.class, () -> calculatorHelperMock.toPostfix("2 2"));
     }
 
     @Test
