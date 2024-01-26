@@ -32,7 +32,7 @@ class CalculatorTest {
     }
 
     @Test
-    void throwNoSuchElementException() {
+    void throwNoOperationException() {
         when(calculatorMock.solveExpression(anyString())).thenThrow(NoOperatorException.class);
         assertThrows(NoOperatorException.class, () -> calculatorMock.solveExpression(" 2 "));
     }
